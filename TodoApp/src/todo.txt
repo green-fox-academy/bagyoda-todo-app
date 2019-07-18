@@ -1,5 +1,3 @@
-Walk the dog
-Buy milk
-Do homework
-Feed the monkey dude
-Feed the monkey dude
+[x] Walk the dog
+[x] Buy milk
+[ ] Do homework

@@ -5,39 +5,51 @@ import java.util.List;
 
 public class ListTasks {
 
-    static Task taskInstance = new Task();
+
+    List<Task> taskContainer = new ArrayList<>();
 
     public void listAllTasks(){
-        List<String> printFromList = readFromFile();
+        readFromFile();
         System.out.println();
         int counter = 0;
 
-        if (printFromList.size() == 0){
+        if (this.taskContainer.size() == 0){
             System.out.println("No todos for today! :)");
         } else {
-            for (String s : printFromList ) {
+            for (int i = 0; i <this.taskContainer.size() ; i++) {
                 counter++;
-                System.out.println(counter + " - " + s);
+                System.out.println(counter + " - " + this.taskContainer.get(i).description);
             }
         }
     }
 
-    public List readFromFile(){
+    public void readFromFile(){
 
         String inputFile = "todo.txt";
         String fileLines = "";
-        List<String> lineContainer = new ArrayList<>();
         BufferedReader fileReader = null;
 
         try {
             fileReader = new BufferedReader(new FileReader(inputFile));
             while ((fileLines = fileReader.readLine()) != null) {
-                lineContainer.add(fileLines);
+                Task taskInstance = new Task();
+                taskInstance.description = fileLines;
+                taskInstance.isDone = isDoneFromFile(fileLines);
+                taskContainer.add(taskInstance);
             }
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
-        return lineContainer;
+    }
+
+    public boolean isDoneFromFile (String fileLines) {
+
+        if (fileLines.contains("[x]")){
+            return true;
+        }
+        return false;
     }
 
 }
+
+

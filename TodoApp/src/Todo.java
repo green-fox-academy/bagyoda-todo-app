@@ -4,6 +4,8 @@ public class Todo {
 
     static ListTasks listTasksInstance = new ListTasks();
     static AddTask addTaskInstance = new AddTask();
+    static RemoveTask removeTaskInstance = new RemoveTask();
+    static CheckCompletion checkCompletionInstance = new CheckCompletion();
 
     public static void main(String[] args) {
 
@@ -20,6 +22,9 @@ public class Todo {
                 measureCaseTwo(args);
                 break;
 
+            default:
+                System.out.println("Unsupported argument.");
+                break;
         }
 
     }
@@ -46,20 +51,33 @@ public class Todo {
                 System.out.println("Unable to add: no task provided");
                 break;
             case "-r":
-                System.out.println("-r/ not implemented yet");
+                System.out.println("Unable to remove: no index provided");
                 break;
             case "-c":
-                System.out.println("-c/ not implemented yet");
+                System.out.println("Unable to check: no index provided");
+                break;
+            default:
+                System.out.println("Unsupported argument.");
                 break;
         }
     }
 
     private static void measureCaseTwo(String[] args) {
 
-        if (args[0].equals("-a")){
-            addTaskInstance.addTaskToList(args[1]);
-        }
+        String s = args[0];
 
+        switch(s){
+            case "-a":
+                addTaskInstance.addTaskToList(args[1]);
+                break;
+            case "-r":
+                removeTaskInstance.parseChecker(args[1]);
+                break;
+            case "-c":
+                checkCompletionInstance.checkCompletionInput(args[1]);
+                break;
+
+        }
     }
 
 }
