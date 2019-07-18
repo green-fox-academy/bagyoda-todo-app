@@ -1,2 +1,2 @@
-# bagyoda_githu-todo-app
+# bagyoda-todo-app
 tetris
