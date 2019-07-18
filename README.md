@@ -1,2 +1,2 @@
-# bagyoda_github_handle-todo-app
+# bagyoda_githu-todo-app
 tetris
